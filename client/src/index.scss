@@ -17,3 +17,16 @@ body,
 a {
   text-decoration: none;
 }
+
+ul, li {
+  list-style: none;
+}
+
+button {
+  outline: none;
+  border: none;
+}
+
+.section {
+  padding-top: 100px;
+}

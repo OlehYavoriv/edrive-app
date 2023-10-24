@@ -1,0 +1,246 @@
+@import "../../styles/index";
+
+.header {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: $white-color;
+
+  &::after,
+  &::before {
+    position: absolute;
+    content: '';
+    background: $porcelain-color;
+    top: 0;
+  }
+
+  &::after {
+    @include set-size(230px, 100%);
+    left: 0;
+    clip-path: polygon(80% 0, 0 0, 20% 100%, 100% 100%);
+  }
+
+  &::before {
+    @include set-size(375px, 100%);
+    right: 0;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 33% 100%, 0% 0%);
+  }
+
+  &__container {
+    @include flex(row, space-between, center);
+    position: relative;
+    max-width: 1920px;
+    column-gap: 20px;
+    height: 100px;
+    margin: 0 auto;
+    padding: 0 15px;
+    z-index: 5;
+
+    .logo {
+      img {
+        padding-left: 40px;
+        height: 30px;
+
+        &:hover {
+          animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+          transform: translate3d(0, 0, 0);
+          perspective: 1000px;
+        }
+      }
+    }
+
+    .burger__menu {
+      display: none;
+    }
+
+    .navigation {
+      &__list {
+        @include flex($items: center, $content: space-evenly);
+        flex-wrap: wrap;
+        column-gap: 20px;
+      }
+
+      &__link {
+        @include font($font-size-sm, normal, $boulder-color, 600);
+        text-transform: uppercase;
+        opacity: 1;
+        position: relative;
+        transition: color 0.3s ease 0s;
+
+        &:before,
+        &:after {
+          content: '';
+          position: absolute;
+          transition: transform 0.5s ease;
+        }
+
+        &:before {
+          @include set-size(100%, 2px);
+          left: 0;
+          bottom: 0;
+          background: $onyx-color;
+          transform: scaleX(0);
+        }
+
+        &:hover {
+          color: $onyx-color;
+
+          &:before {
+            transform: scaleX(1);
+          }
+        }
+      }
+    }
+
+    .profile {
+      &__auth_btn {
+        @include font($font-size-sm, normal, $onyx-color, 600);
+        @include customButton(12px 38px, $golden-yellow-color, $black-color);
+      }
+    }
+  }
+}
+
+.sticky {
+  @include set-size(100%, 100px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  animation: slideDown 0.35s ease-out;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.10);
+}
+
+.active__link {
+  @include font($font-size-sm, normal, $onyx-color, 600);
+  text-transform: uppercase;
+}
+
+@media (max-width: map-get($breakpoints, md)) {
+  .header {
+    background-color: $porcelain-color;
+
+    &::after, &::before {
+      content: none;
+    }
+
+    &__container {
+      .logo {
+        img {
+          padding-left: 0;
+        }
+      }
+
+      .navigation {
+        @include set-size(100%, 100%);
+        position: fixed;
+        overflow: auto;
+        top: 100px;
+        left: -100%;
+        background-color: #DBEBE7;
+        transition: left 0.3s ease 0s;
+        padding-top: 50px;
+
+        &__list {
+          flex-direction: column !important;
+          row-gap: 30px;
+        }
+
+        &.active {
+          left: 0;
+
+          &:before {
+            left: 0;
+          }
+        }
+      }
+
+      .burger__menu {
+        display: block !important;
+        flex: 0 0 35px;
+        height: 18px;
+        position: relative;
+        cursor: pointer;
+        z-index: 5;
+        margin-left: 10px;
+
+        span {
+          @include set-size(100%, 2px);
+          transition: all 0.3s ease 0s;
+          top: calc(50% - 1px);
+          left: 0;
+          position: absolute;
+          border-radius: 10px;
+          background-color: $onyx-color;
+
+          &:first-child {
+            top: 0;
+            left: -5px;
+          }
+
+          &:last-child {
+            bottom: 0;
+            top: auto;
+            left: -5px;
+          }
+        }
+
+        &:hover {
+          span {
+            left: -5px;
+          }
+        }
+
+        &.active {
+          span {
+            z-index: 5;
+            transform: scale(0);
+
+            &:first-child {
+              transform: rotate(-45deg);
+              top: calc(50% - 1px);
+            }
+
+            &:last-child {
+              transform: rotate(45deg);
+              bottom: calc(50% - 1px);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: map-get($breakpoints, xxxl)) {
+  .header {
+    &::after, &::before {
+      content: none;
+    }
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-2px, 0, 0);
+  }
+  40%, 60% {
+    transform: translate3d(2px, 0, 0);
+  }
+}
