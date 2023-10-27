@@ -1,7 +1,6 @@
 import {
     ABOUT_ROUTE,
     CONTACT_ROUTE,
-    CREATE_TEST_ROUTE,
     FAQ_ROUTE,
     HOME_ROUTE,
     TESTING_ROUTE
@@ -33,11 +32,4 @@ export const navigationPublicData: navigationDataProps[] = [
         path: CONTACT_ROUTE,
         title: "Contact"
     },
-]
-
-export const navigationPrivateData: navigationDataProps[] = [
-    {
-        path: CREATE_TEST_ROUTE,
-        title: "Create a test"
-    }
 ]
