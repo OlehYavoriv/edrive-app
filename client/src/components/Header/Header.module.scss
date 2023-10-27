@@ -6,6 +6,7 @@
   top: 0;
   left: 0;
   background-color: $white-color;
+  z-index: 20;
 
   &::after,
   &::before {
@@ -97,6 +98,16 @@
       &__auth_btn {
         @include font($font-size-sm, normal, $onyx-color, 600);
         @include customButton(12px 38px, $golden-yellow-color, $black-color);
+      }
+
+      &__container {
+        @include flex($direction: row, $items: center);
+        column-gap: 10px;
+
+        .admin_link {
+          @include flex($direction: row);
+          column-gap: 5px;
+        }
       }
     }
   }
@@ -206,6 +217,13 @@
               bottom: calc(50% - 1px);
             }
           }
+        }
+      }
+
+      .profile {
+        &__container {
+          flex-direction: column !important;
+          row-gap: 30px;
         }
       }
     }

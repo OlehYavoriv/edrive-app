@@ -1,0 +1,73 @@
+@import "../../styles/index";
+
+.spinner {
+  @include set-size(50px, 50px);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg) translate3d(0, 0, 0);
+  animation: loader 1.2s infinite ease-in-out;
+
+  span {
+    @include set-size(25px, 25px);
+    position: absolute;
+    display: block;
+    background-color: $silver-chalice-color;
+    animation: loaderBlock 1.2s infinite ease-in-out both;
+
+    &:nth-child(1) {
+      top: 0;
+      left: 0;
+    }
+
+    &:nth-child(2) {
+      top: 0;
+      right: 0;
+      animation: loaderBlockInverse 1.2s infinite ease-in-out both;
+    }
+
+    &:nth-child(3) {
+      bottom: 0;
+      left: 0;
+      animation: loaderBlockInverse 1.2s infinite ease-in-out both;
+    }
+
+    &:nth-child(4) {
+      bottom: 0;
+      right: 0;
+    }
+  }
+}
+
+@keyframes loader {
+  0%, 10%, 100% {
+    @include set-size(50px, 50px);
+  }
+  65% {
+    @include set-size(150px, 150px);
+  }
+}
+
+@keyframes loaderBlock {
+  0%, 30% {
+    transform: rotate(0);
+  }
+  55% {
+    background-color: $liver-color;
+  }
+  100% {
+    transform: rotate(90deg);
+  }
+}
+
+@keyframes loaderBlockInverse {
+  0%, 20% {
+    transform: rotate(0);
+  }
+  55% {
+    background-color: $liver-color;
+  }
+  100% {
+    transform: rotate(-90deg);
+  }
+}
