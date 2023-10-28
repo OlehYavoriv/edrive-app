@@ -9,6 +9,7 @@ import { RiAdminFill } from "react-icons/ri";
 import { IUser } from "../../utils/interfaces";
 import Logo from '../../assets/images/logo.png';
 import styles from './Header.module.scss';
+import { Avatar } from "../Avatar";
 
 export const Header = observer(() => {
     const {user}: any = useContext(Context);
@@ -58,7 +59,7 @@ export const Header = observer(() => {
                                             Admin <RiAdminFill/>
                                         </NavLink>
                                     )}
-                                    <Link to={PROFILE_ROUTE} className={styles.avatar}>Avatar</Link>
+                                    <Link to={PROFILE_ROUTE} className={styles.avatar}><Avatar/></Link>
                                 </div>
                             ) : (
                                 <Link to={LOGIN_ROUTE} className={styles.profile__auth_btn}>Login</Link>
