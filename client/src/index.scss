@@ -1,3 +1,5 @@
+@import "./styles/index";
+
 *,
 *::before,
 *::after {
@@ -30,4 +32,16 @@ button {
 
 .section {
   padding-top: 100px;
+}
+
+.admin-page_title {
+  @include font($font-size-largeTitle, normal, $onyx-color, 700);
+  margin: 20px 40px;
+  text-transform: capitalize;
+}
+
+@media (max-width: map-get($breakpoints, md)) {
+  .admin-page_title {
+    text-align: center;
+  }
 }

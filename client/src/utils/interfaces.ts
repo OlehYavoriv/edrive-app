@@ -6,3 +6,13 @@ export interface IUser {
     iat?: number;
     exp?: number;
 }
+
+export interface ITopic {
+    topic_id: number;
+    title: string;
+}
+
+export interface TopicTableProps {
+    topics: ITopic[];
+    refreshTopics: (topics: ITopic[]) => void;
+}

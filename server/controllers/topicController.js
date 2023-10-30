@@ -1,4 +1,4 @@
-const { Topics } = require("../models/models");
+const {Topics} = require("../models/models");
 const ApiError = require('../error/ApiError')
 
 class TopicController {
@@ -17,6 +17,20 @@ class TopicController {
         const topics = await Topics.findAll()
 
         return res.json(topics)
+    }
+
+    async delete(req, res, next) {
+        try {
+            const {id} = req.params;
+            const topic = await Topics.findByPk(id);
+            if (!topic) return next(ApiError.badRequest("Topic not found"));
+
+            await topic.destroy();
+
+            return res.json({message: "Topic deleted successfully"});
+        } catch (e) {
+            next(ApiError.badRequest(e.message));
+        }
     }
 }
 

@@ -1,0 +1,112 @@
+@import "../../styles/index";
+
+.container {
+  @include flex(column, center, center);
+  margin: 30px 10px;
+}
+
+.table {
+  border-collapse: collapse;
+  max-width: 1000px;
+  width: 100% !important;
+  display: table;
+  box-shadow: rgba(0, 0, 0, 0.16) 0 1px 4px;
+
+  &__head {
+    tr {
+      background-color: $boulder-color;
+      @include font($font-size-large, normal, $white-color, 600);
+
+      th {
+        border: none;
+        padding: 20px 30px;
+      }
+    }
+  }
+
+  th, td {
+    @include dots;
+    padding: 12px 15px;
+    text-align: center;
+    word-wrap: break-word;
+  }
+
+  &__body {
+    .remove_btn {
+      @include font($font-size-large, normal, $red-color, 500);
+      cursor: pointer;
+      transition: color 0.3s;
+
+      &:hover {
+        color: $dark-red-color;
+        transform: scale(1.1);
+      }
+    }
+
+    tr {
+      background-color: $white-smoke-color;
+      border-bottom: 1px solid $gainsboro-color;
+
+      &:nth-of-type(even) {
+        background-color: $white-color;
+      }
+
+      &:last-of-type {
+        border-bottom: 2px solid $boulder-color;
+      }
+
+      &:hover {
+        background-color: $porcelain-color;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.pagination {
+  @include flex($direction: row, $content: center);
+  margin: 20px 0;
+  column-gap: 10px;
+
+  &__item {
+    .page_number {
+      @include flex(row, center, center);
+      @include set-size(40px, 40px);
+      @include font($font-size-large, normal, $boulder-color, 600);
+      cursor: pointer;
+      transition: all 0.3s;
+      background-color: $white-color;
+      border: 1px solid $boulder-color;
+      border-radius: 50%;
+
+      &:hover {
+        background-color: $boulder-color;
+        color: $white-color;
+      }
+    }
+  }
+}
+
+@media (max-width: map-get($breakpoints, md)) {
+  .table {
+    max-width: 700px;
+    border: 0 !important;
+
+    &__head {
+      display: none;
+    }
+
+    tr {
+      margin-bottom: 10px;
+      display: block;
+      border: 1px solid $soft-peach-color !important;
+    }
+
+    td {
+      @include font($font-size-sm, normal, $onyx-color, 500);
+      display: block;
+      text-align: left;
+      border-bottom: 1px dotted $soft-peach-color !important;
+    }
+  }
+}
