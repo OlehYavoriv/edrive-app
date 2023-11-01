@@ -40,6 +40,12 @@ button {
   text-transform: capitalize;
 }
 
+.container {
+  max-width: 1920px;
+  margin: 30px auto;
+  padding: 0 15px;
+}
+
 @media (max-width: map-get($breakpoints, md)) {
   .admin-page_title {
     text-align: center;

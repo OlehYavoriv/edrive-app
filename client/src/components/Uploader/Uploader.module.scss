@@ -1,0 +1,76 @@
+@import "../../styles/index";
+
+.uploader {
+  display: flex;
+  align-items: center;
+  animation-duration: 1s;
+
+  &__label {
+    @include set-size(calc(500px + 2 * 20px + 2 * 2px), calc(300px + 2 * 20px + 2 * 2px));
+    padding: 20px;
+    text-align: center;
+    border-radius: 20px;
+    background-color: $gainsboro-color;
+    cursor: pointer;
+    box-sizing: border-box;
+
+    .image_view {
+      @include set-size(100%, 100%);
+      position: relative;
+      border-radius: 20px;
+      border: 2px dashed $boulder-color;
+      background-color: $white-color;
+
+      .selected_img {
+        @include set-size(100%, 100%);
+        border-radius: 20px;
+      }
+
+      .remove_btn {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        font-size: $font-size-largeTitle;
+        color: $boulder-color;
+
+        svg {
+          background-color: $white-color;
+          border-radius: 100%;
+        }
+      }
+
+      .placeholder {
+        width: 200px;
+        margin: 0 auto;
+      }
+
+      span {
+        @include font($font-size-smallest, normal, $boulder-color, 500);
+        display: block;
+        margin: 15px 0 0 0;
+      }
+    }
+  }
+}
+
+@media (max-width: map-get($breakpoints, lg)) {
+  .uploader {
+    justify-content: center;
+  }
+}
+
+@media (max-width: map-get($breakpoints, md)) {
+  .uploader {
+    &__label {
+      @include set-size(calc(350px + 2 * 20px + 2 * 2px), calc(200px + 2 * 20px + 2 * 2px));
+      padding: 15px;
+
+      .image_view {
+        span,
+        p {
+          display: none;
+        }
+      }
+    }
+  }
+}

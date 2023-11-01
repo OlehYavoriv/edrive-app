@@ -13,3 +13,8 @@ export const fetchTopic = async () => {
 export const deleteTopic = async (topicId: number) => {
     await $authHost.delete(`api/topic/${topicId}`);
 };
+
+export const createTest = async (test: any) => {
+    const {data} = await $authHost.post("api/question/", test);
+    return data
+}
