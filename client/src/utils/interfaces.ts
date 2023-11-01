@@ -16,3 +16,15 @@ export interface TopicTableProps {
     topics: ITopic[];
     refreshTopics: (topics: ITopic[]) => void;
 }
+
+export interface Answer {
+    answer_text: string;
+    is_correct: boolean;
+}
+
+export interface ITest {
+    file: File | null;
+    question: string;
+    selectedTopic: string;
+    answers: Answer[];
+}

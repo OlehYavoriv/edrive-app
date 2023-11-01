@@ -41,14 +41,16 @@ export const CreateTopicPage = observer(() => {
 
     return (
         <section className={`section ${styles.wrapper}`}>
-            <h3 className='admin-page_title'>Create topic</h3>
-            <form className={styles.form}>
-                <input type='text' className={styles.form__input} value={value}
-                       onChange={e => setValue(e.target.value)}
-                       placeholder='Enter topic'/>
-                <button type='button' className={styles.form__btn} onClick={addTopic}>Send</button>
-            </form>
-            <TopicTable topics={test.topics} refreshTopics={refreshTopics}/>
+            <div className='container'>
+                <h3 className='admin-page_title'>Create topic</h3>
+                <form className={styles.form}>
+                    <input type='text' className={styles.form__input} value={value}
+                           onChange={e => setValue(e.target.value)}
+                           placeholder='Enter topic'/>
+                    <button type='button' className={styles.form__btn} onClick={addTopic}>Send</button>
+                </form>
+                <TopicTable topics={test.topics} refreshTopics={refreshTopics}/>
+            </div>
         </section>
     );
 });

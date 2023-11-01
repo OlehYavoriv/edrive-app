@@ -3,6 +3,17 @@
   overflow: hidden;
 }
 
+@mixin form-input-styles {
+  @include font($font-size-medium, normal, $boulder-color, 500);
+  border: 1.5px solid $boulder-color;
+  outline: none;
+  height: auto;
+
+  &::placeholder {
+    font-size: $font-size-sm;
+  }
+}
+
 @mixin customButton($padding, $background-color, $before-background) {
   position: relative;
   display: inline-block;

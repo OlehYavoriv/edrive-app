@@ -3,7 +3,7 @@ import { observer } from "mobx-react-lite";
 import { Link, NavLink } from "react-router-dom";
 import { Context } from "../../index";
 import { navigationPublicData } from "../../data/navData";
-import { CREATE_TEST_ROUTE, HOME_ROUTE, LOGIN_ROUTE, PROFILE_ROUTE } from "../../utils/consts";
+import { ADMIN_ROUTE, HOME_ROUTE, LOGIN_ROUTE, PROFILE_ROUTE } from "../../utils/consts";
 import { decodeToken, getTokenFromLocalStorage } from "../../utils/token";
 import { RiAdminFill } from "react-icons/ri";
 import { IUser } from "../../utils/interfaces";
@@ -54,7 +54,7 @@ export const Header = observer(() => {
                             {user.isAuth ? (
                                 <div className={styles.profile__container}>
                                     {decodedToken.role === 'ADMIN' && (
-                                        <NavLink to={CREATE_TEST_ROUTE}
+                                        <NavLink to={ADMIN_ROUTE}
                                                  className={({isActive}) => `${isActive ? styles.active__link : styles.navigation__link} ${styles.admin_link}`}>
                                             Admin <RiAdminFill/>
                                         </NavLink>
