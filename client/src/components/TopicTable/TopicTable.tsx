@@ -4,14 +4,14 @@ import { error, success } from "../../utils/toasts";
 import { deleteTopic, fetchTopic } from "../../api/testApi";
 import { ITopic, TopicTableProps } from "../../utils/interfaces";
 import { MdDelete } from "react-icons/md";
+import { Pagination } from "../Pagination";
+import { calculateIndexes, itemsPerPage } from "../../utils/pagination";
 import styles from './TopicTable.module.scss';
 
 export const TopicTable: FC<TopicTableProps> = ({ topics, refreshTopics }) => {
-    const itemsPerPage = 10;
     const pageNumbers = [];
     const [currentPage, setCurrentPage] = useState(1);
-    const indexOfLastItem = currentPage * itemsPerPage;
-    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const {indexOfLastItem, indexOfFirstItem} = calculateIndexes(currentPage, itemsPerPage);
     const visibleTopics = topics.slice(indexOfFirstItem, indexOfLastItem);
 
     const handleDeleteClick = async (topic: ITopic) => {
@@ -58,16 +58,8 @@ export const TopicTable: FC<TopicTableProps> = ({ topics, refreshTopics }) => {
                 ))}
                 </tbody>
             </table>
-
-            <ul className={styles.pagination}>
-                {pageNumbers.map(number => (
-                    <li key={number} className={styles.pagination__item}>
-                        <button onClick={() => paginate(number)} className={styles.page_number}>
-                            {number}
-                        </button>
-                    </li>
-                ))}
-            </ul>
+            <Pagination itemsPerPage={itemsPerPage} totalItems={topics.length} paginate={paginate}
+                        currentPage={currentPage}/>
         </div>
     );
 };

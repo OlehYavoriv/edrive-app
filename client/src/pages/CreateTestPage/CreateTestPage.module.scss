@@ -233,23 +233,9 @@
   }
 
   .create_test__btn {
-    @include font($font-size, normal, $white-color, 700);
-    padding: 18px 85px;
-    text-align: center;
-    display: flex;
-    margin: 50px auto 50px auto;
-    background-color: $golden-color;
-    border-radius: 10px;
-    transition: all 0.5s ease 0s;
-    animation-duration: 1.5s;
-
-    &:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    }
+    @include admin-form-btn(18px 85px, 10px, 50px auto 50px auto);
   }
 }
-
 
 @keyframes input-animate {
   0% {
@@ -283,7 +269,6 @@
     transform: scale(1) rotate(-45deg);
   }
 }
-
 
 @media (max-width: map-get($breakpoints, xl)) {
   .form {

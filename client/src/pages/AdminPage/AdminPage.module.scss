@@ -1,0 +1,20 @@
+@import "../../styles/index";
+
+.wrapper {
+  min-height: calc(100vh - 100px);
+  background-color: $porcelain-color;
+}
+
+.title {
+  @include font(45px, normal, $onyx-color, 900);
+  text-align: center;
+  margin: 50px 0;
+  text-wrap: normal;
+}
+
+@media (max-width: map-get($breakpoints, md)) {
+  .title {
+    @include font($font-size-largeTitle, normal, $onyx-color, 900);
+    margin: 30px 0;
+  }
+}

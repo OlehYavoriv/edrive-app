@@ -1,6 +1,6 @@
 import React from "react";
 import {
-    ABOUT_ROUTE, ADMIN_ROUTE, CONTACT_ROUTE, CREATE_TEST_ROUTE,
+    ABOUT_ROUTE, ADMIN_ROUTE, CONTACT_ROUTE, CREATE_TEST_ROUTE, CREATE_TICKET_ROUTE,
     CREATE_TOPIC_ROUTE, FAQ_ROUTE,
     HOME_ROUTE,
     LOGIN_ROUTE,
@@ -18,6 +18,7 @@ import {AboutPage} from "../pages/AboutPage";
 import {ContactPage} from "../pages/ContactPage";
 import {CreateTopicPage} from "../pages/CreateTopicPage";
 import {CreateTestPage} from "../pages/CreateTestPage";
+import {CreateTicketPage} from "../pages/CreateTicketPage";
 
 interface IRoute {
     path: string,
@@ -74,5 +75,9 @@ export const adminRoutes: IRoute[] = [
     {
         path: CREATE_TEST_ROUTE,
         Component: CreateTestPage
+    },
+    {
+        path: CREATE_TICKET_ROUTE,
+        Component: CreateTicketPage
     },
 ]

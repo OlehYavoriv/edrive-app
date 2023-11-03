@@ -1,12 +1,8 @@
 @import "../../styles/index";
 
-.container {
-  @include flex(column, center, center);
-  margin: 30px 10px;
-}
-
 .table {
   @include admin-table(1000px);
+  margin: 0 auto;
 
   &__head {
     @include admin-table-head(20px 30px, $boulder-color);
@@ -26,21 +22,11 @@
       }
     }
 
-    tr {
-      background-color: $white-smoke-color;
-      border-bottom: 1px solid $gainsboro-color;
-
-      &:nth-of-type(even) {
-        background-color: $white-color;
-      }
-
-      &:last-of-type {
-        border-bottom: 2px solid $boulder-color;
-      }
+    .item {
+      cursor: pointer;
 
       &:hover {
-        background-color: $porcelain-color;
-        cursor: pointer;
+        background-color: $gainsboro-color;
       }
     }
   }

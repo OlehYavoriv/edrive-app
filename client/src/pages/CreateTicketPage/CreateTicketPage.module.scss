@@ -1,0 +1,101 @@
+@import "../../styles/index";
+
+.wrapper {
+  min-height: calc(100vh - 100px);
+  background-color: $porcelain-color;
+}
+
+.form {
+  .search_input {
+    @include form-input-styles;
+    display: block;
+    border-radius: 10px;
+    padding: 10px;
+    width: 60%;
+    margin: 20px auto;
+  }
+
+  .table {
+    @include admin-table(1000px);
+    margin: 0 auto;
+    width: 100%;
+
+    &__head {
+      @include admin-table-head(20px 20px, $boulder-color);
+      display: block;
+    }
+
+    &__body {
+      display: block;
+      height: 500px;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      tr{
+        td{
+          .checkbox{
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+    &__head,
+    &__body {
+      tr {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+
+        td, th {
+          &:nth-child(1) {
+            width: 10%;
+          }
+
+          &:nth-child(2) {
+            width: 10%;
+          }
+
+          &:nth-child(3) {
+            width: 70%;
+          }
+
+          &:nth-child(4) {
+            width: 10%;
+          }
+        }
+      }
+    }
+
+    @include admin-table-cell(12px 15px, center);
+  }
+
+  .send_btn {
+    @include admin-form-btn(18px 85px, 10px, 50px auto 50px auto);
+  }
+}
+
+@media (max-width: map-get($breakpoints, md)) {
+  .form {
+    .table {
+      max-width: 700px;
+      border: 0 !important;
+
+      &__head {
+        display: none;
+      }
+
+      tr {
+        margin-bottom: 10px;
+        display: block;
+        border: 1px solid $soft-peach-color !important;
+      }
+
+      td {
+        @include font($font-size-sm, normal, $onyx-color, 500);
+        display: block;
+        text-align: left;
+        border-bottom: 1px dotted $soft-peach-color !important;
+      }
+    }
+  }
+}
