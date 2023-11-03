@@ -1,0 +1,33 @@
+@import "../../styles/index";
+
+.pagination {
+  @include flex($direction: row, $content: center);
+  padding: 20px 0;
+  column-gap: 10px;
+
+  &__item {
+    .page_number,
+    .activePage {
+      @include flex(row, center, center);
+      @include set-size(40px, 40px);
+      @include font($font-size-large, normal, $boulder-color, 600);
+      cursor: pointer;
+      transition: all 0.3s;
+      background-color: $white-color;
+      border: 1px solid $boulder-color;
+      border-radius: 50%;
+    }
+
+    .page_number {
+      &:hover {
+        background-color: $boulder-color;
+        color: $white-color;
+      }
+    }
+
+    .activePage {
+      color: $golden-color;
+      background-color: $boulder-color;
+    }
+  }
+}

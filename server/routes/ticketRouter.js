@@ -5,5 +5,6 @@ const checkRole = require('../middleware/checkRoleMiddleware')
 
 router.post('/', checkRole('ADMIN'), ticketController.create)
 router.get('/', ticketController.getAll)
+router.delete('/:id', checkRole('ADMIN'), ticketController.delete);
 
 module.exports = router

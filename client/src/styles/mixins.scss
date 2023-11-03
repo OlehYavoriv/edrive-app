@@ -1,6 +1,54 @@
+@import "variables";
+
 @mixin dots {
   text-overflow: ellipsis;
   overflow: hidden;
+}
+
+@mixin admin-table($width) {
+  border-collapse: collapse;
+  max-width: $width;
+  width: 100% !important;
+  display: table;
+  box-shadow: rgba(0, 0, 0, 0.16) 0 1px 4px;
+}
+
+@mixin admin-table-head($th-padding,$bg) {
+  tr {
+    background-color: $bg;
+    @include font($font-size-large, normal, $white-color, 600);
+
+    th {
+      border: none;
+      padding: $th-padding;
+    }
+  }
+}
+
+@mixin admin-table-cell($padding,$text-align) {
+  th, td {
+    @include dots;
+    padding: $padding;
+    text-align: $text-align;
+    word-wrap: break-word;
+  }
+}
+
+@mixin admin-form-btn($padding,$radius,$margin) {
+  @include font($font-size, normal, $white-color, 700);
+  padding: $padding;
+  text-align: center;
+  display: flex;
+  margin: $margin;
+  background-color: $golden-color;
+  border-radius: $radius;
+  transition: all 0.5s ease 0s;
+  animation-duration: 1.5s;
+
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  }
 }
 
 @mixin form-input-styles {

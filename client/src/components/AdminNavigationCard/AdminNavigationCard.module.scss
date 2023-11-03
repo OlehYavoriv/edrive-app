@@ -1,0 +1,35 @@
+@import "../../styles/index";
+
+.card {
+  @include flex(column, center, center);
+  text-align: center;
+  width: 60%;
+  background-color: $white-color;
+  padding: 20px;
+  border: 1px solid $gainsboro-color;
+  border-radius: 8px;
+  transition: transform 0.2s;
+  margin: 0 auto;
+
+  img {
+    @include set-size(100px, 100px);
+  }
+
+  h3 {
+    @include font($font-size-medium, normal, $onyx-color, 600);
+    margin: 15px 0;
+  }
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+}
+
+@media (max-width: map-get($breakpoints, md)) {
+  .card {
+    img {
+      @include set-size(60px, 60px);
+    }
+  }
+}

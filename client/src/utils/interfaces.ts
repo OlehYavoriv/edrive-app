@@ -28,3 +28,32 @@ export interface ITest {
     selectedTopic: string;
     answers: Answer[];
 }
+
+export interface IQuestion {
+    test_id: number;
+    question: string;
+    topicTopicId: number;
+    image: string;
+    TestAnswers: Answer[];
+}
+
+export interface ITestTicket {
+    id: number;
+    createdAt: string;
+    updatedAt: string;
+    testTestId: number;
+    ticketTicketId: number;
+}
+
+export interface CustomTicketModalProps {
+    isOpen: boolean;
+    onRequestClose: () => void;
+    questions: IQuestion[];
+}
+
+export interface PaginationProps {
+    itemsPerPage: number;
+    totalItems: number;
+    paginate: (pageNumber: number) => void;
+    currentPage: number;
+}
