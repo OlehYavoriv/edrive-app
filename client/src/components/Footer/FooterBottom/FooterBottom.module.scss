@@ -1,0 +1,30 @@
+@import "../../../styles/index";
+
+.footer_bottom {
+  position: relative;
+  padding: 22px 0;
+
+  &__wrapper {
+    max-width: 1440px;
+    padding: 0 15px;
+    margin: 0 auto;
+
+    .list {
+      @include flex(row, space-between, center);
+      position: relative;
+
+      li {
+        a {
+          @include font($font-size-medium, $line-height-lg, $lavender-grey-color, 400);
+          position: relative;
+          display: inline-block;
+          transition: all 0.3s;
+
+          &:hover {
+            @include font($font-size-medium, $line-height-lg, $golden-yellow-color, 400);
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+@import "../../styles/index";
+
+.footer {
+  position: relative;
+  background: $onyx-color;
+
+  .bg_layer {
+    @include set-size(calc(50% - 230px), 100%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url("../../assets/images/footer-bg.jpg") center/cover no-repeat;
+
+    &:after {
+      @include set-size(100%, 100%);
+      position: absolute;
+      content: '';
+      left: 0;
+      bottom: 0;
+      background: -webkit-linear-gradient(-180deg, rgba(18, 17, 19, 1) 0%, rgba(18, 18, 19, 0.60) 100%);
+    }
+  }
+}
