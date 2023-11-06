@@ -1,0 +1,116 @@
+@import "../../../styles/index";
+
+.footer_top {
+  position: relative;
+  padding: 114px 0 105px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+
+  &__wrapper {
+    max-width: 1440px;
+    padding: 0 15px;
+    margin: 0 auto;
+
+    .content {
+      @include flex($direction: row, $content: space-between);
+      flex-wrap: wrap;
+      margin: 0 -15px;
+
+      &_about {
+        margin-top: 6px;
+        flex: 0 0 25%;
+        max-width: 25%;
+        width: 100%;
+        padding: 0 15px;
+
+        .logo {
+          position: relative;
+          display: block;
+          margin-bottom: 24px;
+
+          img {
+            height: 50px;
+            filter: grayscale(100%) invert(100%);
+          }
+        }
+
+        h4 {
+          @include font($font-size-large, 30px, $white-color, 500);
+          position: relative;
+          display: block;
+          margin-bottom: 5px;
+        }
+
+        ul {
+          margin-bottom: 30px;
+
+          li {
+            a {
+              @include font($font-size, $line-height-lg, $white-color, 500);
+              position: relative;
+              display: block;
+              padding: 15px 0 14px 0;
+              border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+              transition: all 0.3s;
+
+              &:hover {
+                color: $golden-yellow-color;
+              }
+            }
+          }
+        }
+
+        p {
+          @include font($font-size, $line-height-lg, $lavender-grey-color, 500);
+          margin-bottom: 5px;
+
+          a {
+            @include font($font-size, $line-height-lg, $golden-yellow-color, 500);
+          }
+        }
+      }
+
+      .links_container {
+        .list {
+          li {
+            position: relative;
+            display: block;
+            margin-bottom: 15px;
+            padding-left: 22px;
+
+            a {
+              @include font($font-size-medium, $line-height-lg, $lavender-grey-color, 400);
+              transition: all 0.3s;
+
+              &:before {
+                @include set-size(6px, 6px);
+                position: absolute;
+                content: '';
+                background: $boulder-color;
+                left: 0;
+                top: 11px;
+                transition: all 500ms ease;
+              }
+
+              &:hover {
+                color: $golden-yellow-color;
+
+                &:before {
+                  background: $golden-yellow-color;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: map-get($breakpoints, md)) {
+  .content {
+    &_about {
+      flex: 1 !important;
+      max-width: 100% !important;
+    }
+  }
+}

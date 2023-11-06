@@ -7,6 +7,7 @@ import { useContext, useEffect, useState } from "react";
 import { Context } from "./index";
 import { auth } from "./api/userApi";
 import { Spinner } from "./components/Spinner";
+import { Footer } from "./components/Footer";
 
 const App = observer(() => {
     const {user}: any = useContext(Context);
@@ -25,6 +26,7 @@ const App = observer(() => {
         <ErrorBoundary>
             <Header/>
             <Routing/>
+            <Footer/>
         </ErrorBoundary>
     );
 })

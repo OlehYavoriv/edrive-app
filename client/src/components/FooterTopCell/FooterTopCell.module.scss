@@ -1,0 +1,43 @@
+@import "../../styles/index";
+
+.cell {
+  flex: 0 0 20%;
+  max-width: 20%;
+  width: 100%;
+  padding: 0 15px;
+
+  &_title {
+    position: relative;
+    display: block;
+    padding-bottom: 13px;
+    margin-bottom: 33px;
+
+    &:before {
+      @include set-size(50px, 1px);
+      position: absolute;
+      content: '';
+      left: 0;
+      bottom: 0;
+      background: $golden-yellow-color;
+    }
+
+    h4 {
+      @include font($font-size-large, 30px, $white-color, 500);
+      display: block;
+    }
+  }
+}
+
+@media (max-width: map-get($breakpoints, lg)) {
+  .cell {
+    flex: 0 0 40%;
+    max-width: 40%;
+  }
+}
+
+@media (max-width: map-get($breakpoints, md)) {
+  .cell {
+    flex: 0 0 90%;
+    max-width: 90%;
+  }
+}
