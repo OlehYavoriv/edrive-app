@@ -3,8 +3,8 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const {User} = require('../models/models')
 
-const generateJwt = (id, first_name, last_name, email, role) => {
-    return jwt.sign({id, first_name, last_name, email, role}, process.env.SECRET_KEY, {expiresIn: '24h'})
+const generateJwt = (uid, first_name, last_name, email, role) => {
+    return jwt.sign({uid, first_name, last_name, email, role}, process.env.SECRET_KEY, {expiresIn: '24h'})
 }
 
 class UserController {

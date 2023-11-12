@@ -1,0 +1,78 @@
+@import "../../styles/index";
+
+.list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.6rem;
+
+  &:has(.list__item:hover) {
+    cursor: pointer;
+
+    .list__item {
+      &:not(:hover) {
+        opacity: 0.6;
+        scale: 0.98;
+      }
+    }
+  }
+
+  &__item {
+    h4 {
+      @include font($font-size-large, normal, $white-color, 500);
+    }
+
+    p {
+      @include font($font-size-medium, normal, $white-color, 500);
+    }
+
+    flex: 1;
+    background-color: $silver-chalice-color;
+    padding: 30px;
+    border-radius: 0.8rem;
+    color: $white-color;
+    transition: all 0.2s;
+    text-align: center;
+
+    .placeholder {
+      width: 200px;
+      margin: 0 auto;
+    }
+  }
+}
+
+.load_more__btn {
+  @include customButton(20px 60px, $onyx-color, $golden-color, 1);
+  @include font($font-size-sm, normal, $onyx-color, 600);
+  margin: 20px auto;
+  display: block;
+  color: $white-color;
+
+  &:hover {
+    color: $onyx-color;
+  }
+}
+
+@media (max-width: map-get($breakpoints, md)) {
+  .list {
+    &__item {
+      h4 {
+        @include font($font-size, normal, $white-color, 500);
+      }
+
+      p {
+        @include font($font-size-sm, normal, $white-color, 500);
+
+      }
+
+      .placeholder {
+        width: 100px;
+      }
+    }
+  }
+}
+
+@media (max-width: map-get($breakpoints, sm)) {
+  .list {
+    grid-template-columns: 1fr;
+  }
+}

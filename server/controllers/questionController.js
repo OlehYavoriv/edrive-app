@@ -1,6 +1,6 @@
 const uuid = require('uuid')
 const path = require('path')
-const { Test, TestAnswers } = require('../models/models')
+const { Test, TestAnswers, TestTicket } = require('../models/models')
 const ApiError = require('../error/ApiError')
 
 class QuestionController {
@@ -31,6 +31,27 @@ class QuestionController {
         const question = await Test.findAll()
 
         return res.json(question)
+    }
+
+    async getOne(req, res, next) {
+        try {
+            const {id} = req.params;
+            const testTickets = await TestTicket.findAll({
+                where: {ticketTicketId: id},
+                attributes: ['testTestId']
+            });
+
+            const testIds = testTickets.map((item) => item.testTestId);
+
+            const questions = await Test.findAll({
+                where: {test_id: testIds},
+                include: TestAnswers
+            });
+
+            return res.json(questions);
+        } catch (e) {
+            next(ApiError.internal(e.message));
+        }
     }
 }
 

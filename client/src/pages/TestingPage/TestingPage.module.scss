@@ -1,0 +1,35 @@
+@import "../../styles/index";
+
+.link {
+  display: block;
+  width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px solid $boulder-color;
+
+  p {
+    @include font($font-size-large, normal, $onyx-color, 700);
+    text-align: center;
+  }
+
+  .placeholder {
+    width: 300px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: map-get($breakpoints, sm)) {
+
+  .link {
+    width: 200px;
+
+    p {
+      @include font($font-size, normal, $onyx-color, 700);
+    }
+
+    .placeholder {
+      width: 200px;
+    }
+  }
+}

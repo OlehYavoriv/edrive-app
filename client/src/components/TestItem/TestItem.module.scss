@@ -1,0 +1,115 @@
+@import '../../styles/index';
+
+.form {
+  @include flex($direction: column);
+
+  &_list {
+    &__item {
+      margin-bottom: 50px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      .question {
+        @include font($font-size-large, normal, $onyx-color, 700);
+        margin: 15px 0;
+      }
+
+      .container {
+        display: flex;
+        column-gap: 30px;
+
+        &__image {
+          width: 500px;
+          border: 1px solid $boulder-color;
+          border-radius: 5px;
+        }
+
+        &__answers {
+          padding-top: 20px;
+
+          li {
+            border: 1px solid $boulder-color;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+            &:last-child {
+              margin-bottom: 0;
+            }
+
+            &:hover {
+              background-color: $gainsboro-color;
+            }
+
+            label {
+              cursor: pointer;
+
+              input {
+                position: absolute;
+                opacity: 0;
+                pointer-events: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .send_btn {
+    @include admin-form-btn(18px 85px, 10px, 50px auto 50px auto);
+    cursor: pointer;
+  }
+}
+
+.correct_answer,
+.incorrect_answer {
+  pointer-events: none;
+  color: $white-color;
+}
+
+.correct_answer {
+  background-color: $green-color;
+}
+
+.incorrect_answer {
+  background-color: $red-color;
+}
+
+@media (max-width: map-get($breakpoints, lg)) {
+  .form {
+    &_list {
+      &__item {
+        .container {
+          &__image {
+            width: 300px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: map-get($breakpoints, md)) {
+  .form {
+    &_list {
+      &__item {
+        .question {
+          @include font($font-size-medium, normal, $onyx-color, 700);
+        }
+
+        .container {
+          flex-direction: column;
+
+          &__image {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}

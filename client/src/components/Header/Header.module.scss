@@ -97,7 +97,7 @@
     .profile {
       &__auth_btn {
         @include font($font-size-sm, normal, $onyx-color, 600);
-        @include customButton(12px 38px, $golden-yellow-color, $black-color);
+        @include customButton(12px 38px, $golden-yellow-color, $black-color, 0.1);
       }
 
       &__container {
