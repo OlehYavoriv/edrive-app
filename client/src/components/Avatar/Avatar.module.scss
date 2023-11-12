@@ -1,11 +1,6 @@
 @import '../../styles/index';
 
 .avatar {
+  @include avatar(50px, 50px);
   @include font($font-size-medium, normal, $white-color, 700);
-  @include flex(row, center, center);
-  @include set-size(50px, 50px);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  border-radius: 100%;
-  background-color: $boulder-color;
 }

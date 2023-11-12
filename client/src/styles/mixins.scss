@@ -5,6 +5,15 @@
   overflow: hidden;
 }
 
+@mixin avatar($width,$height) {
+  @include flex(row, center, center);
+  @include set-size($width, $height);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 100%;
+  background-color: $boulder-color;
+}
+
 @mixin admin-table($width) {
   border-collapse: collapse;
   max-width: $width;

@@ -47,3 +47,8 @@ export const fetchTicket = async () => {
 export const deleteTicket = async (ticketId: number) => {
     await $authHost.delete(`api/ticket/${ticketId}`);
 };
+
+export const fetchUserProgress = async (uid: number) => {
+    const {data} = await $authHost.get(`api/progress/${uid}`);
+    return data
+};
