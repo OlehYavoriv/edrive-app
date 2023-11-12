@@ -1,0 +1,54 @@
+@import "../../../styles/index";
+
+.modal {
+  @include set-size(100vw, 100vh);
+  @include flex(row, center, center);
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 25;
+
+  .modal_content {
+    @include flex(column, center);
+    padding: 20px;
+    border-radius: 12px;
+    background-color: $porcelain-color;
+    width: 70%;
+
+    .btn {
+      margin-left: auto;
+    }
+
+    h2 {
+      @include font($font-size-largeTitle, normal, $onyx-color, 700);
+      margin: 0 0 20px 0;
+    }
+
+    .list {
+      max-height: 300px;
+      overflow: auto;
+
+      li {
+        b {
+          @include font($font-size-large, normal, $onyx-color, 700);
+        }
+
+        @include font($font-size-large, normal, $boulder-color, 700);
+        padding: 5px;
+        text-wrap: normal;
+      }
+    }
+  }
+
+  .close {
+    color: $red-color;
+    font-size: $font-size-large;
+    cursor: pointer;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $dark-red-color;
+    }
+  }
+}

@@ -62,12 +62,13 @@
   }
 }
 
-@mixin customButton($padding, $background-color, $before-background) {
+@mixin customButton($padding, $background-color, $before-background, $opacity) {
   position: relative;
   display: inline-block;
   overflow: hidden;
   vertical-align: middle;
   text-align: center;
+  cursor: pointer;
   padding: $padding;
   text-transform: uppercase;
   z-index: 1;
@@ -80,7 +81,7 @@
     right: 0;
     top: 0;
     background: $before-background;
-    opacity: 0.1;
+    opacity: $opacity;
     z-index: -1;
     transition: all 500ms ease;
   }

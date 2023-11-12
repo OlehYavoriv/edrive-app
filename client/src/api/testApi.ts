@@ -24,6 +24,16 @@ export const fetchQuestion = async () => {
     return data
 }
 
+export const fetchOneQuestion = async (id: string | undefined) => {
+    const {data} = await $authHost.get(`api/question/` + id);
+    return data;
+}
+
+export const sendAnswers = async (answers: any) => {
+    const {data} = await $authHost.post("api/progress/", answers);
+    return data
+}
+
 export const createTicket = async (ticket: any) => {
     const {data} = await $authHost.post("api/ticket/", ticket);
     return data

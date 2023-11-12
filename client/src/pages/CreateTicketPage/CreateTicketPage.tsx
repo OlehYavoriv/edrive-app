@@ -6,7 +6,7 @@ import {toast} from 'react-toastify';
 import {error, success} from '../../utils/toasts';
 import {TicketModal} from "../../components/Modals/TicketModal";
 import {IQuestion, ITestTicket} from "../../utils/interfaces";
-import styles from './CreateTicketPage.module.scss'
+import styles from './CreateTicketPage.module.scss';
 import {TicketTable} from "../../components/TicketTable";
 
 export const CreateTicketPage = observer(() => {
@@ -81,6 +81,37 @@ export const CreateTicketPage = observer(() => {
         }
     };
 
+    const createTicketAutomatically = async () => {
+        const uniqueTopicIds: any[] = Array.from(new Set(test.questions.map((question: IQuestion) => question.topicTopicId)));
+        const createdTickets: any[] = [];
+
+        const ticketPromises = uniqueTopicIds.map(async (topicId: number) => {
+            const questionIds = test.questions
+                .filter((question: IQuestion) => question.topicTopicId === topicId)
+                .map((question: IQuestion) => question.test_id);
+
+            const existingTicket = test.tickets.find((ticket: any) => ticket.topicTopicId === topicId);
+
+            if (existingTicket) {
+                const updatedQuestionIds = Array.from(new Set([...existingTicket.testTestId, ...questionIds]));
+                const formData = new FormData();
+                formData.append('testIds', JSON.stringify(updatedQuestionIds));
+
+                const updatedTicket = await createTicket(formData);
+                createdTickets.push(updatedTicket);
+            } else {
+                const formData = new FormData();
+                formData.append('testIds', JSON.stringify(questionIds));
+                const createdTicket = await createTicket(formData);
+                createdTickets.push(createdTicket);
+            }
+        });
+
+        await Promise.all(ticketPromises);
+
+        toast.success('Tickets created/updated automatically!', success);
+    };
+
     return (
         <section className={`section ${styles.wrapper}`}>
             <div className="container">
@@ -111,7 +142,8 @@ export const CreateTicketPage = observer(() => {
                                     <td>{question.topicTopicId}</td>
                                     <td>{question.question}</td>
                                     <td>
-                                        <input type="checkbox" className={styles.checkbox} onChange={() => handleCheckboxChange(question.test_id)}
+                                        <input type="checkbox" className={styles.checkbox}
+                                               onChange={() => handleCheckboxChange(question.test_id)}
                                                checked={selectedQuestionIds.includes(question.test_id)}
                                         />
                                     </td>
@@ -121,6 +153,9 @@ export const CreateTicketPage = observer(() => {
                     </table>
                     <button type="button" className={styles.send_btn} onClick={addTicket}>
                         Create ticket
+                    </button>
+                    <button type="button" className={styles.send_btn} onClick={createTicketAutomatically}>
+                        Create tickets by Topic
                     </button>
                 </form>
                 <TicketTable groupedTickets={groupedTickets} handleTicketClick={handleTicketClick}
