@@ -1,0 +1,76 @@
+@import "../../styles/index";
+
+.top {
+  @include flex(row, space-between, center);
+
+  button {
+    font-size: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+}
+
+.wrapper {
+  .avatar {
+    @include avatar(120px, 120px);
+    @include font($font-size-largeTitle, normal, $white-color, 700);
+    margin: 10px auto;
+  }
+
+  .user_info {
+    .username {
+      text-align: center;
+      @include font($font-size-large, normal, $liver-color, 700);
+      text-transform: capitalize;
+      margin-bottom: 10px;
+    }
+
+    .email {
+      text-align: center;
+      @include font($font-size-medium, normal, $liver-color, 200);
+      margin-bottom: 30px;
+    }
+
+    &__progress {
+      width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+      border-radius: 10px;
+      border: 2px solid $boulder-color;
+
+      h4 {
+        @include font($font-size-large, normal, $liver-color, 500);
+        margin-bottom: 20px;
+      }
+
+      p {
+        @include font($font-size-medium, normal, $liver-color, 500);
+        margin-bottom: 10px;
+      }
+
+      .circle {
+        text-align: center;
+      }
+    }
+  }
+}
+
+@media (max-width: map-get($breakpoints, sm)) {
+  .wrapper {
+    .avatar {
+      @include avatar(70px, 70px);
+      @include font($font-size-large, normal, $white-color, 700);
+    }
+
+    .user_info {
+      &__progress {
+        width: 260px;
+        padding: 15px;
+      }
+    }
+  }
+}

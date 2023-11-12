@@ -25,6 +25,21 @@ class ProgressController {
             next(ApiError.badRequest(error.message));
         }
     }
+
+    async getUserProgress(req, res, next) {
+        try {
+            const userId = req.params.uid;
+
+            const userProgress = await TicketProgress.findAll({
+                where: {userUid: userId},
+                attributes: ['userUid', 'progress', 'correct', 'ticketTicketId']
+            });
+
+            return res.json({userProgress});
+        } catch (error) {
+            next(ApiError.badRequest(error.message));
+        }
+    }
 }
 
 module.exports = new ProgressController();

@@ -9,7 +9,7 @@ import { ProgressModal } from "../Modals/ProgressModal";
 import { observer } from "mobx-react-lite";
 import styles from './TestItem.module.scss';
 
-export const TestItem = () => {
+export const TestItem = observer(() => {
     const {id}: any = useParams();
     const [questions, setQuestions] = useState<IQuestion[]>([]);
     const [selectedAnswers, setSelectedAnswers] = useState<any>({});
@@ -121,4 +121,4 @@ export const TestItem = () => {
             )}
         </section>
     );
-};
+});
