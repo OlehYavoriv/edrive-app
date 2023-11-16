@@ -1,0 +1,44 @@
+@import "../../styles/index";
+
+.top_box {
+  position: relative;
+  max-width: 1440px;
+  padding: 0 15px;
+  margin: 20px auto 50px auto;
+  display: flex;
+
+  .big_text {
+    @include font(250px, 200px, rgba(255, 255, 255, 1), 600);
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-transform: uppercase;
+    text-shadow: -1px -1px 0 $harp, 1px -1px 0 $harp, -1px 1px 0 $harp, 1px 1px 0 $harp;
+  }
+
+  .section_title {
+    position: relative;
+    display: block;
+    margin-bottom: 50px;
+
+    h2 {
+      @include font(44px, 56px, $onyx-color, 600);
+    }
+  }
+}
+
+@media (max-width: map-get($breakpoints, md)) {
+  .top_box {
+    .big_text {
+      display: none;
+    }
+
+    .section_title {
+      margin-bottom: 10px;
+
+      h2 {
+        @include font(30px, normal, $onyx-color, 600);
+      }
+    }
+  }
+}

@@ -1,0 +1,51 @@
+@import "../../styles/index";
+
+.layer {
+  position: relative;
+  display: block;
+  padding: 10rem 2rem;
+  background: url("../../assets/images/bg-layer.jpg") center/cover no-repeat;
+
+  &:before {
+    @include set-size(100%, 100%);
+    position: absolute;
+    content: '';
+    background: $black-color;
+    left: 0;
+    top: 0;
+    opacity: 0.15;
+  }
+
+  .text_container {
+    h2 {
+      @include font(50px, normal, $white-color, 700);
+      position: relative;
+      display: block;
+      text-align: center;
+    }
+  }
+}
+
+@media (max-width: map-get($breakpoints, xl)) {
+  .layer {
+    padding: 7rem 2rem;
+  }
+}
+
+@media (max-width: map-get($breakpoints, md)) {
+  .layer {
+    padding: 3rem 2rem;
+
+    .text_container {
+      h2 {
+        @include font(40px, normal, $white-color, 700);
+      }
+    }
+  }
+}
+
+@media (max-width: map-get($breakpoints, sm)) {
+  .layer {
+    padding: 1.5rem 2rem;
+  }
+}

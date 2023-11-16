@@ -1,0 +1,110 @@
+@import "../../styles/index";
+
+b {
+  margin: 0 20px 0 0;
+  text-transform: uppercase;
+  @include font($font-size-large, 30px, $onyx-color, 900);
+}
+
+.accordion {
+  max-width: 1440px;
+  margin: 0 auto;
+  width: 100%;
+
+  &__items {
+    border-bottom: 1px solid $lavender-grey-color;
+
+    button[aria-expanded='true'] {
+      border-bottom: 1px solid $golden-color;
+    }
+
+    button {
+      @include font(1.15rem, normal, $onyx-color, 400);
+      position: relative;
+      display: block;
+      text-align: left;
+      width: 100%;
+      padding: 1em 0;
+      cursor: pointer;
+
+      .accordion_title {
+        padding: 1em 1.5em 1em 0;
+        @include font($font-size-large, 30px, $onyx-color, 500);
+      }
+
+      .icon {
+        @include set-size(22px, 22px);
+        display: inline-block;
+        position: absolute;
+        top: 18px;
+        right: 0;
+        border: 1px solid;
+        border-radius: 22px;
+
+        &::before {
+          @include set-size(10px, 2px);
+          display: block;
+          position: absolute;
+          content: '';
+          top: 10px;
+          left: 6px;
+          background: currentColor;
+        }
+
+        &::after {
+          @include set-size(2px, 10px);
+          display: block;
+          position: absolute;
+          content: '';
+          top: 6px;
+          left: 10px;
+          background: currentColor;
+        }
+      }
+    }
+
+    button[aria-expanded='true'] {
+      color: $onyx-color;
+
+      .icon {
+        &::after {
+          width: 0;
+        }
+      }
+
+      + .accordion_content {
+        opacity: 1;
+        max-height: 9em;
+        transition: all 200ms linear;
+        will-change: opacity, max-height;
+      }
+    }
+
+    .accordion_content {
+      @include flex($direction: row, $items: center);
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: opacity 200ms linear, max-height 200ms linear;
+      will-change: opacity, max-height;
+
+      p {
+        font-family: 'Inter Normal', sans-serif;
+        @include font($font-size-medium, normal, $boulder-color, 400);
+        margin: 2em 0;
+      }
+    }
+  }
+}
+
+@media (max-width: map-get($breakpoints, sm)) {
+  .accordion {
+    &__items {
+      button {
+        .icon {
+          display: none;
+        }
+      }
+    }
+  }
+}
