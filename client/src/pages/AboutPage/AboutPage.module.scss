@@ -1,0 +1,312 @@
+@import "../../styles/index";
+
+.wrapper {
+  max-width: 1440px;
+  padding: 0 15px;
+  margin: 100px auto;
+
+  .about_section {
+    display: flex;
+    flex-wrap: wrap;
+
+    .image_container {
+      margin-right: 20px;
+      flex: 1;
+      position: relative;
+
+      img {
+        width: 100%;
+      }
+
+      .figure {
+        position: absolute;
+        right: -1px;
+        bottom: 0;
+        width: 290px;
+        padding: 41px 10px 0 100px;
+        background: $white-color;
+        text-align: right;
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 30% 0%);
+
+        &_container {
+          @include flex(row, space-between, center);
+
+          svg {
+            font-size: 40px;
+          }
+
+          .text {
+            span {
+              @include font(30px, 30px, $onyx-color, 600);
+            }
+
+            p {
+              @include font($font-size-large, 30px, $boulder-color, 500);
+            }
+          }
+        }
+      }
+    }
+
+    .text_container {
+      flex: 1;
+
+      h2 {
+        @include font(40px, 56px, $onyx-color, 600);
+        margin-bottom: 30px;
+      }
+
+      .description {
+        display: flex;
+        justify-content: space-between;
+
+        &__text {
+          p {
+            @include font($font-size-medium, normal, $boulder-color, 500);
+            font-family: 'Inter Normal', sans-serif;
+            margin-bottom: 20px;
+            padding-right: 20px;
+          }
+
+          ul {
+            padding-right: 40px;
+
+            li {
+              margin-bottom: 10px;
+              padding-bottom: 2px;
+              border-bottom: 4px solid $onyx-color;
+
+              a {
+                @include font($font-size-large, 30px, $onyx-color, 500);
+                padding: 11px 0 10px 0;
+                position: relative;
+                display: block;
+
+                &:hover {
+                  padding-left: 20px;
+                  color: $white-color;
+                  background: $onyx-color;
+                }
+              }
+            }
+          }
+        }
+
+        .achievement {
+          @include flex($direction: column, $items: center);
+
+          &__item {
+            @include flex(row, center, center);
+            @include set-size(170px, 155px);
+            line-height: 155px;
+            text-align: center;
+            background: $white-color;
+            box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.10);
+            margin-bottom: 30px;
+
+            &:last-child {
+              margin-bottom: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .customers_section {
+    position: relative;
+    padding: 100px 0;
+
+    .title {
+      position: relative;
+      display: block;
+      margin-bottom: 27px;
+      text-align: center;
+
+      span {
+        @include font(120px, 120px, $onyx-color, 700);
+        position: relative;
+        display: block;
+        z-index: 1;
+        margin-bottom: 7px;
+      }
+
+      p {
+        @include font($font-size-large, 30px, $boulder-color, 500)
+      }
+
+      &:before {
+        @include set-size(100%, 1px);
+        position: absolute;
+        content: '';
+        background: #e4e0e0;
+        left: 0;
+        top: 62px;
+      }
+
+      &:after {
+        @include set-size(430px, 1px);
+        position: absolute;
+        content: '';
+        background: $white-color;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 62px;
+      }
+    }
+
+    .info {
+      @include flex(row, space-between, center);
+      width: 100%;
+
+      &_item {
+        text-align: center;
+
+        span {
+          @include font(46px, 50px, $onyx-color, 600);
+          margin-bottom: 5px;
+        }
+
+        p {
+          @include font($font-size-medium, 30px, $boulder-color, 500);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: map-get($breakpoints, lg)) {
+  .wrapper {
+    .about_section {
+      flex-direction: column;
+
+      .image_container {
+        margin-right: 0;
+      }
+
+      .text_container {
+        h2 {
+          margin-top: 30px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: map-get($breakpoints, md)) {
+  .wrapper {
+    .about_section {
+      .text_container {
+        h2 {
+          @include font(30px, 46px, $onyx-color, 600);
+        }
+      }
+    }
+
+    .customers_section {
+      padding: 100px 0 0 0;
+
+      .info {
+        flex-direction: column;
+
+        &_item {
+          margin-bottom: 20px;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: map-get($breakpoints, sm)) {
+  .wrapper {
+    margin: 20px auto !important;
+
+    .about_section {
+      .image_container {
+        .figure {
+          display: none;
+
+          &_container {
+            svg {
+              font-size: 20px;
+            }
+
+            .text {
+              span {
+                @include font($font-size-largeTitle, 30px, $onyx-color, 600);
+              }
+
+              p {
+                @include font($font-size-medium, 30px, $boulder-color, 500);
+              }
+            }
+          }
+        }
+      }
+
+      .text_container {
+        h2 {
+          @include font($font-size-large, 30px, $onyx-color, 600);
+        }
+
+        .description {
+          flex-direction: column;
+
+          &__text {
+            p {
+              padding-right: 0;
+            }
+          }
+
+          .achievement {
+            flex-direction: row;
+
+            &__item {
+              @include flex(row, center, center);
+              @include set-size(140px, 125px);
+              margin-bottom: 0;
+              margin-right: 30px;
+
+              img {
+                width: 60%;
+              }
+
+              &:last-child {
+                margin-right: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  .wrapper {
+    .about_section {
+      .text_container {
+        .description {
+          flex-direction: column;
+
+          .achievement {
+            flex-direction: column;
+
+            &__item {
+              margin-bottom: 10px;
+              margin-right: 0;
+
+              &:last-child {
+                margin-bottom: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
