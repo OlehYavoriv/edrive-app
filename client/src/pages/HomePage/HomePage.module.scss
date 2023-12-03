@@ -1,0 +1,116 @@
+@import "../../styles/index";
+
+.marquee {
+  padding: 20px 0;
+
+  i {
+    @include font(30px, normal, $onyx-color, 600);
+  }
+}
+
+.instructions {
+  position: relative;
+  padding: 111px 0 120px 0;
+  background-color: $onyx-color;
+  margin: 30px auto;
+
+  .shape {
+    @include set-size(50%, 100%);
+    background-image: url("../../assets/images/highlights-bg.png");
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 61% 0%);
+  }
+
+  &__container {
+    max-width: 1440px;
+    padding: 0 15px;
+    margin: 0 auto;
+
+    .text {
+      max-width: 550px;
+      margin-bottom: 50px;
+
+      h3 {
+        @include font(44px, 56px, $white-color, 600);
+        margin-bottom: 20px;
+      }
+
+      p {
+        @include font($font-size-medium, normal, $lavender-grey-color, 400);
+        font-family: 'Inter Normal', sans-serif;
+      }
+    }
+
+    .blocks {
+      margin: 0 auto;
+
+      &_list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.6rem;
+
+        li {
+          position: relative;
+          display: block;
+          background: $white-color;
+          padding: 24px 20px 30px 40px;
+          margin-bottom: 30px;
+
+          &:first-child {
+            clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 100% 65%, 90% 100%, 0% 100%, 0% 100%, 0% 0%);
+          }
+
+          &:nth-child(2) {
+            clip-path: polygon(0% 0%, 100% 0%, 100% 15%, 100% 100%, 80% 100%, 11% 100%, 0% 65%, 0% 20%);
+          }
+
+          &:nth-child(3) {
+            clip-path: polygon(0% 0%, 90% 0%, 100% 36%, 100% 100%, 80% 100%, 21% 100%, 0% 100%, 0% 20%);
+          }
+
+          &:last-child {
+            clip-path: polygon(11% 0%, 100% 0%, 100% 0%, 100% 70%, 100% 100%, 0% 100%, 0% 100%, 0% 36%);
+          }
+
+          .item_text {
+            a {
+              @include font($font-size-large, 30px, $onyx-color, 500);
+              transition: all 0.3s ease;
+
+              &:hover {
+                @include font($font-size-large, 30px, $golden-color, 500);
+                margin-bottom: 10px;
+              }
+            }
+
+            p {
+              @include font($font-size-medium, normal, $boulder-color, 400);
+              font-family: 'Inter Normal', sans-serif;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: map-get($breakpoints, md)) {
+  .instructions {
+    &__container {
+      .blocks {
+        &_list {
+          grid-template-columns: 1fr;
+          gap: 0;
+
+          li {
+            clip-path: border-box !important;
+          }
+        }
+      }
+    }
+  }
+}
