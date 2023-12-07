@@ -1,0 +1,142 @@
+@import "../../styles/index";
+
+.wrapper {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  column-gap: 60px;
+  background: $onyx-color;
+  clip-path: polygon(0% 0%, 87% 0%, 100% 18%, 100% 100%, 80% 100%, 25% 100%, 0% 100%, 0% 20%);
+
+  .inner {
+    .bg {
+      position: relative;
+      width: 100%;
+      background: url("../../assets/images/contact-inner.jpeg") center/cover no-repeat;
+      max-width: 400px;
+      padding: 100px 60px;
+
+      &:before {
+        @include set-size(100%, 100%);
+        position: absolute;
+        content: '';
+        background: $onyx-color;
+        left: 0;
+        top: 0;
+        opacity: 0.72;
+      }
+    }
+
+    &_box {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 30px;
+
+      &__item {
+        margin-bottom: 30px;
+
+        img {
+          margin-bottom: 20px;
+        }
+
+        h3 {
+          @include font($font-size-large, 30px, $white-color, 500);
+          margin-bottom: 10px;
+        }
+
+        p, a {
+          @include font($font-size-medium, normal, $lavender-grey-color, 400);
+          font-family: 'Inter Normal', sans-serif;
+          margin-bottom: 10px;
+        }
+
+        a {
+          transition: all 0.3s ease;
+
+          &:hover {
+            color: $golden-color;
+          }
+        }
+      }
+    }
+
+    .social_list {
+      display: flex;
+
+      li {
+        display: inline-block;
+        float: left;
+        margin-right: 15px;
+
+        &:last-child {
+          margin-right: 0;
+        }
+
+        a {
+          @include set-size(52px, 52px);
+          @include font($font-size-medium, 52px, $boulder-color, 600);
+          @include flex(row, center, center);
+          position: relative;
+          background: $white-color;
+          text-align: center;
+          border-radius: 50%;
+          box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.15);
+          transition: all 0.3s ease;
+
+          &:hover {
+            background-color: $golden-yellow-color;
+            color: $onyx-color;
+          }
+        }
+      }
+    }
+  }
+
+  .container {
+    position: relative;
+    margin: 0 auto;
+    padding: 91px 100px 100px 0;
+
+    h2 {
+      @include font(44px, 56px, $white-color, 600);
+      margin-bottom: 10px;
+    }
+
+    p {
+      @include font($font-size-medium, normal, $white-smoke-color, 400);
+      font-family: 'Inter Normal', sans-serif;
+      margin-bottom: 30px;
+    }
+
+    .form {
+      width: 100%;
+
+      input, textarea {
+        @include set-size(100%, 52px);
+        @include font($font-size-medium, normal, $boulder-color);
+        position: relative;
+        display: block;
+        background: $white-color;
+        border: 1px solid $white-color;
+        padding: 10px 20px;
+        transition: all 500ms ease;
+        margin-bottom: 10px;
+        resize: none;
+      }
+
+      button {
+        @include font($font-size-sm, $line-height-lg, $white-color, 600);
+        cursor: pointer;
+        padding: 12px 50px;
+        text-align: center;
+        text-transform: uppercase;
+        z-index: 1;
+        transition: all 500ms ease;
+        border: 1px solid $golden-color;
+      }
+    }
+  }
+}
